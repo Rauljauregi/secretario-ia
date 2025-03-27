@@ -66,7 +66,7 @@ Este repositorio va acompañado de una serie de artículos explicativos:
 
 | Nº | Título |
 |----|--------|
-| 1 | [Tu secretario inteligente]([https://www.mindfulml.vialabsdigital.com](https://mindfulml.vialabsdigital.com/post/secretario-inteligente-1/)) |
+| 1 | [Tu secretario inteligente]([https://mindfulml.vialabsdigital.com/post/secretario-inteligente-1/]) |
 | 2 | Cómo conectar tu agente con Notion y empezar a priorizar tu día |
 | 3 | ¿Qué hago primero hoy? Cómo decidir tareas con IA (sin volverte loco) |
 | 4 | Habla con tu agente por Telegram |
