@@ -47,10 +47,15 @@ Y próximamente:
 
 ## 🗂 Estructura del proyecto (en progreso)
 /src main.py 
-# Lógica principal del agente prioritize.py 
-# Lógica de puntuación de tareas format_message.py 
-# Generación del mensaje Telegram initiatives.yaml 
-# Mensajes y recomendaciones inteligentes /config settings.env # Variables de entorno (token, chat_id, etc.) /notion_export # Datos simulados para testeo README.md requirements.txt Dockerfile
+Lógica principal del agente prioritize.py 
+Lógica de puntuación de tareas format_message.py 
+Generación del mensaje Telegram initiatives.yaml 
+Mensajes y recomendaciones inteligentes /config settings.env 
+Variables de entorno (token, chat_id, etc.) /notion_export 
+Datos simulados para testeo 
+README.md 
+requirements.txt 
+Dockerfile
 
 
 ---
