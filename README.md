@@ -1,8 +1,3 @@
-¡Sin problema, Raúl! Vamos a fusionar y limpiar ambos bloques que has escrito, manteniendo lo mejor de cada uno: la visión inspiradora, la parte técnica y los pasos para usarlo. Aquí tienes tu **README final, listo para hacer push**:
-
----
-
-```markdown
 # 🤖 secretario-ia
 
 **Tu secretario inteligente**: un agente modular con IA que organiza tu día, prioriza tareas y te habla por Telegram.
@@ -162,8 +157,3 @@ Si quieres proponer mejoras, usarlo en tu empresa o adaptarlo a tus flujos… es
 ## 📝 Licencia
 
 MIT – libre uso, modificación y distribución. Solo te pido que cites el origen.
-```
-
----
-
-¿Quieres que te prepare ahora también el `requirements.txt` actualizado para que no falte nada antes del push?
