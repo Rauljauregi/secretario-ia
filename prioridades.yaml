@@ -1,0 +1,9 @@
+Prioridad:
+  Alta: 3
+  Media: 2
+  Baja: 1
+
+Urgencia:
+  Urgente: 3
+  Normal: 2
+  Baja: 1
