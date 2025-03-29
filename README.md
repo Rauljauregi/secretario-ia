@@ -23,6 +23,14 @@ Y próximamente:
 
 ---
 
+¡Perfecto, Raúl! Aquí tienes el fragmento actualizado del README listo para pegar. Ya incluye:
+
+- La explicación del nuevo sistema de priorización por `Priority`, `Due Date` y `Status`.
+- El enlace correcto al **Artículo 2 del blog** que vas a publicar:  
+  👉 *https://mindfulml.vialabsdigital.com/post/secretario-inteligente-2/*
+
+---
+
 ## 🧠 ¿Cómo está compuesto este agente?
 
 | Parte                 | ¿Qué hace?                            | Ejemplo                                           |
@@ -31,6 +39,42 @@ Y próximamente:
 | **Modelo del entorno** | Entiende las consecuencias de actuar o no | ¿Qué pasa si dejo esta tarea para mañana?    |
 | **Módulo de decisión** | Elige qué hacer según prioridades     | Calcula urgencia, impacto, estancamiento         |
 | **Ejecución**        | Toma acción                            | Te escribe por Telegram con el resumen del día   |
+
+---
+
+### 🚦 Prioriza tareas con lógica configurable
+
+El agente decide qué tareas son más urgentes e importantes, basándose en:
+
+| Columna en Notion | ¿Cómo influye? |
+|-------------------|----------------|
+| **Priority**       | Da más peso a tareas *High*, menos a *Low*. |
+| **Due Date**       | Penaliza si ya está vencida. Premia si está próxima. |
+| **Status**         | Ignora tareas *Completed* o *Canceled*. Da puntuación parcial a *In progress*. |
+
+Todo esto está definido en el archivo [`reglas.yaml`](reglas.yaml), que puedes modificar como quieras:
+
+```yaml
+prioridad:
+  High: 3
+  Medium: 2
+  Low: 1
+
+estado:
+  Completed: 0
+  Canceled: 0
+  subtask-checked: 0.5
+  In progress: 1
+  Not started: 1
+
+fecha_limite:
+  penalizacion_dias_vencida: 1.5
+  penalizacion_dias_restantes: 0.2
+```
+
+Puedes adaptar esta lógica a tu realidad. Por ejemplo:
+- Poner más peso a las tareas urgentes aunque sean poco importantes.
+- O lo contrario: priorizar tareas *High* aunque no tengan fecha límite.
 
 ---
 
@@ -134,7 +178,7 @@ Este proyecto se documenta paso a paso en el blog:
 | Nº | Título |
 |----|--------|
 | 1 | [Tu secretario inteligente](https://mindfulml.vialabsdigital.com/post/secretario-inteligente-1/) |
-| 2 | Cómo conectar tu agente con Notion y empezar a priorizar tu día |
+| 2 | [Cómo conectar tu agente con Notion y empezar a priorizar tu día](https://mindfulml.vialabsdigital.com/post/secretario-inteligente-2/) |
 | 3 | ¿Qué hago primero hoy? Cómo decidir tareas con IA (sin volverte loco) |
 | 4 | Habla con tu agente por Telegram |
 | 5 | Añade un LLM a tu agente |
