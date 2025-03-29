@@ -80,3 +80,27 @@ if __name__ == "__main__":
 
     print("📋 Tareas priorizadas:")
     print(df_ordenado[["Nombre", "score"]])
+
+    # telegram_bot.py
+    from telegram_bot import send_telegram_message
+
+    mensaje = "*📋 Tareas priorizadas hoy:*\n\n"
+
+    for _, row in df_ordenado.iterrows():
+        nombre = row['Nombre'].strip()
+        score = row['score']
+
+        # Añade un icono según la puntuación
+        if score >= 800:
+            icono = "🔥"
+        elif score >= 600:
+            icono = "⚠️"
+        else:
+            icono = "➖"
+
+        mensaje += f"{icono} *{nombre}*\n_➤ Prioridad:_ `{score}`\n\n"
+
+    # Enviar mensaje por Telegram
+    send_telegram_message(mensaje)
+
+

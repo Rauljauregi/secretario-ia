@@ -1,0 +1,20 @@
+Antes de cualquier comando, activa el entorno virtual para que se usen las dependencias correctas. Asumiendo que ya estás en la carpeta del proyecto y el entorno se llama `venv`, ejecuta:
+
+```bash
+cd /home/rjaureg/Agentes IA/notion-mcp/venv
+source venv/bin/activate
+```
+
+Una vez que veas el `(venv)` al principio de tu terminal, ya puedes lanzar:
+
+```bash
+cd src
+uvicorn notion_mcp.api_server:app --reload
+
+```
+
+Y si estás trabajando en `secretario-ia`, también puedes probar el script:
+
+```bash
+python notion_client.py
+```
