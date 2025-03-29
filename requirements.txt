@@ -1,0 +1,6 @@
+pandas
+pyyaml
+requests
+fastapi
+uvicorn
+python-dotenv

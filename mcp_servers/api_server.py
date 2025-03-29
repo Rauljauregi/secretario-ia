@@ -3,6 +3,7 @@ from notion_mcp.client import NotionClient
 import os
 from dotenv import load_dotenv
 import json  # <-- para imprimir mejor los resultados
+import traceback
 
 app = FastAPI()
 
@@ -24,32 +25,62 @@ async def context(request: Request):
     db_id = body.get("query", {}).get("database_id")
 
     if not db_id:
-        print("❌ No se recibió un database_id")
+        print("❌ No se recibió un database_id válido")
         return {"context": []}
 
-    print(f"📥 Petición MCP con ID: {db_id}")
-    
     try:
         results = await notion.query_database(database_id=db_id)
+        print(f"📥 Petición MCP con ID: {db_id}")
+
+        tareas = []
+        for r in results["results"]:
+            props = r.get("properties", {})
+            id_tarea = r.get("id")
+            sub_items = props.get("Sub-item", {}).get("relation", [])
+            parent_item = props.get("Parent item", {}).get("relation", [])
+
+            # Extraer los IDs de relación (si existen)
+            sub_ids = [s.get("id") for s in sub_items]
+            parent_id = parent_item[0]["id"] if parent_item else None
+
+            print("🧩 Propiedades disponibles:", props.keys())
+            due_date = ""
+            due_date_prop = props.get("Due Date")
+            if isinstance(due_date_prop, dict):
+                date_value = due_date_prop.get("date")
+                if isinstance(date_value, dict):
+                    due_date = date_value.get("start", "")
+
+            task_prop = props.get("Task", {})
+            nombre = ""
+            if task_prop and isinstance(task_prop, dict):
+                title_list = task_prop.get("title", [])
+                if title_list and isinstance(title_list, list):
+                    nombre = " ".join(t.get("plain_text", "") for t in title_list if isinstance(t, dict))
+
+            priority = ""
+            priority_prop = props.get("Priority")
+            if isinstance(priority_prop, dict):
+                select_value = priority_prop.get("select")
+                if isinstance(select_value, dict):
+                    priority = select_value.get("name", "Baja")
+
+            tarea = {
+                "ID": id_tarea,
+                "Nombre": nombre,
+                "Prioridad": priority,
+                "Fecha": due_date,
+                "Subtareas": sub_ids,
+                "Padre": parent_id
+            }
+
+
+
+            tareas.append(tarea)
+
+        return {"context": tareas}
+
     except Exception as e:
         print(f"❌ Error al consultar Notion: {e}")
+        traceback.print_exc()  # <- esto imprime el error completo
         return {"context": []}
-
-    print("📦 Resultados crudos desde Notion:")
-    print(json.dumps(results, indent=2))  # <-- para ver bien en consola
-
-    tareas = []
-    for r in results.get("results", []):
-        props = r.get("properties", {})
-
-        # Imprimir los nombres de los campos para depuración
-        print("🔍 Propiedades de una tarea:", list(props.keys()))
-
-        tarea = {
-            "Nombre": props.get("Name", {}).get("title", [{}])[0].get("plain_text", ""),
-            "Prioridad": props.get("Prioridad", {}).get("select", {}).get("name", "Baja"),
-        }
-        tareas.append(tarea)
-
-    print(f"✅ Tareas procesadas: {len(tareas)}")
-    return {"context": tareas}
