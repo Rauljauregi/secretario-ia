@@ -179,7 +179,7 @@ Este proyecto se documenta paso a paso en el blog:
 |----|--------|
 | 1 | [Tu secretario inteligente](https://mindfulml.vialabsdigital.com/post/secretario-inteligente-1/) |
 | 2 | [Cómo conectar tu agente con Notion y empezar a priorizar tu día](https://mindfulml.vialabsdigital.com/post/secretario-inteligente-2/) |
-| 3 | ¿Qué hago primero hoy? Cómo decidir tareas con IA (sin volverte loco) |
+| 3 | [¿Qué hago primero hoy? Cómo prioriza el agente tus tareas](https://mindfulml.vialabsdigital.com/post/secretario-inteligente-3/)|
 | 4 | Habla con tu agente por Telegram |
 | 5 | Añade un LLM a tu agente |
 | 6 | Tu agente también actúa |
