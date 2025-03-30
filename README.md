@@ -19,17 +19,7 @@ Y próximamente:
 
 - 🗣️ Podrás **hablar con él por Telegram** (gracias a un modelo LLM)
 - ✍️ **Modificar tareas en Notion desde el chat**
-- 🧘‍♂️ Enviarte recomendaciones inteligentes, recordatorios y mensajes con empatía
-
----
-
-¡Perfecto, Raúl! Aquí tienes el fragmento actualizado del README listo para pegar. Ya incluye:
-
-- La explicación del nuevo sistema de priorización por `Priority`, `Due Date` y `Status`.
-- El enlace correcto al **Artículo 2 del blog** que vas a publicar:  
-  👉 *https://mindfulml.vialabsdigital.com/post/secretario-inteligente-2/*
-
----
+- 🧘‍♂️ Enviarte recomendaciones inteligentes, recordatorios y mensajes con empatía.
 
 ## 🧠 ¿Cómo está compuesto este agente?
 
